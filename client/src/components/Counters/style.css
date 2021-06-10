@@ -1,0 +1,13 @@
+.butn{
+    display: flex;
+    justify-content: space-between;
+}
+#cont{
+    width: 500px;
+    margin: 0 auto;
+    position: relative;
+    height: 100px;
+    padding: 25px;
+    margin-top: 100px;
+
+}

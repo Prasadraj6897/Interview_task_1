@@ -12,6 +12,7 @@ import Testimonials from './components/Testimonials'
 
 import Aos from 'aos';
 import "aos/dist/aos.css";
+import Counter from './components/Counters'
 
 // for animation
 
@@ -28,13 +29,14 @@ const App = (props) => {
   },[])
   return(
 	<div>
-    <Hero />
+    {/* <Hero />
     <Specializing />
     <Expertise />
     <LatestProjects />
     <Qualification />
     <Testimonials />
-    <Footer />
+    <Footer /> */}
+    <Counter />
   </div>
    )
 
