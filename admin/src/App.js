@@ -29,7 +29,6 @@ function App() {
 	  };
 
 
-
 	return (
 		<div className="App">
 			<header className="app-header">
@@ -48,6 +47,16 @@ function App() {
 								onChange={(e) => setUsername(e.target.value)}	
 							/>
 					): null}
+
+					{/* Step 1: show all available users */}
+					{step === 1 ? (
+						<OnlineUsers
+							// onUserSelect={onUserSelect}
+							// users={users}
+							// username={username}
+							// checkUnseenMessages={checkUnseenMessages}
+						/>
+					) : null}
 
 					
 
