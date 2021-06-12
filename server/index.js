@@ -6,6 +6,9 @@ import mongoose from "mongoose"
 
 import indexRouter from './Routers/IndexRouter/IndexRouter.js'
 
+
+
+
 const app = express();
 
 dotenv.config();
@@ -28,11 +31,23 @@ app.use(function(req, res, next) {
 app.use('/', indexRouter);
 
 
+const httpServer = require("http").createServer(app);
+const io = require("socket.io")(httpServer, {
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"],
+  },
+});
 
+io.on("connection", (socket) => {
+    console.log("someone connected and socket id " + socket.id);
 
+    socket.on("disconnect", () => {
+      console.log(`${socket.id} disconnected`);
+    });
 
-mongoose.connect(process.env.CONNECTION_URL , {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex : true})
-    .then(()=>app.listen(process.env.PORT, ()=>console.log(`Server running ${process.env.PORT}`)))
-    .catch((err)=>console.log(err))
+});
 
-mongoose.set('useFindAndModify', false)
+httpServer.listen(process.env.PORT, () => {
+  console.log(`Server connected to port ${process.env.PORT}` );
+})
